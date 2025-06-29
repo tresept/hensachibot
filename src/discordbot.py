@@ -31,3 +31,4 @@ async def on_message(message):
 @bot.event(name="hensachi", discription="大学の偏差値を表示します。")
 async def hensachi(ctx: discord.ApplicationContext):
     print('コマンドを受信しました: hensachi')
+    await ctx.send('大学の偏差値は〇〇です。')
