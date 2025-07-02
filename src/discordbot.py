@@ -4,7 +4,7 @@ import discord
 from dotenv import load_dotenv
 
 load_dotenv()
-bottoken = os.getenv('DISCORD_BOT_TOKEN')
+bottoken = os.getenv('DISCORD_TOKEN')
 
 intents = discord.Intents.default()
 intents.guilds = True
@@ -29,27 +29,27 @@ async def on_message(message):
             print('返信ではないため，メッセージを送信します')
             await message.channel.send('スラッシュコマンドを使え！')
 
-@bot.event(name="hensachi", description="school に学校名を入力すると，偏差値を表示します！")
+@bot.command(name="hensachi", description="school に学校名を入力すると，偏差値を表示します！")
 async def hensachi(ctx: discord.ApplicationContext, school: str):
     print('コマンドを受信しました: hensachi')
-    await ctx.send(f'{school}の偏差値は〇〇です。')
+    await ctx.respond(f'{school}の偏差値は〇〇です。')
 
-@bot.event(name="battle", description="私と偏差値バトルをしましょう！")
+@bot.command(name="battle", description="私と偏差値バトルをしましょう！")
 async def battle(ctx: discord.ApplicationContext, school: str):
     print('コマンドを受信しました: battle')
-    await ctx.send(f'{school}の偏差値は〇〇です。')
+    await ctx.respond(f'{school}の偏差値は〇〇です。')
 
-@bot.event(name="bus", description="香川高専前の次のバスの時間を取得します．")
+@bot.command(name="bus", description="香川高専前の次のバスの時間を取得します．")
 async def TimeTableBus(ctx: discord.ApplicationContext):
     print("コマンドを受信しました: bus")
-    await ctx.send('ttb')
+    await ctx.respond('TODO')
 
-@bot.event(name="train", description="詫間駅の次の電車の時間を取得します．")
+@bot.command(name="train", description="詫間駅の次の電車の時間を取得します．")
 async def TimeTableTrain(ctx: discord.ApplicationContext):
     print("コマンドを受信しました: train")
-    await ctx.send('ttt')
+    await ctx.respond('TODO')
 
-
+bot.run(bottoken)
 
 
 """
